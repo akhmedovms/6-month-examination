@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 
 function InnerPage() {
   const { id } = useParams();
-  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=CYFT8SE-KJY4KT5-NVQSJZK-CW69JJ8`;
+  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=5NZM7DH-J224TPT-JE5FTQA-36H3WT3`;
   const { data: movie, isPending, error } = useFetch(url);
 
   return (
