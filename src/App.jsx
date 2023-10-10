@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import InnerPage from "./pages/innerPage";
 import MainLayout from "./layout/MainLayout";
+
 function App() {
   const routes = createBrowserRouter([
     {

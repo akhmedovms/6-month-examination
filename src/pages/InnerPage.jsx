@@ -7,13 +7,9 @@ function InnerPage() {
   const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=W1QDTDE-W7749ND-PAFDWKF-28C31MZ`;
   const { data: movie, isPending, error } = useFetch(url);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
   return (
     <>
-      {movie ? (
+      {movie && (
         <div className="flex justify-center">
           <div className="card card-side bg-base-100 shadow-xl flex justify-center w-min">
             <figure>
@@ -82,8 +78,6 @@ function InnerPage() {
             </div>
           </div>
         </div>
-      ) : (
-        <div>Loading...</div>
       )}
     </>
   );
