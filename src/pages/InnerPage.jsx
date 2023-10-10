@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 
 function InnerPage() {
   const { id } = useParams();
-  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=W1QDTDE-W7749ND-PAFDWKF-28C31MZ`;
+  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=5NZM7DH-J224TPT-JE5FTQA-36H3WT3`;
   const { data: movie, isPending, error } = useFetch(url);
 
   return (
@@ -22,7 +22,6 @@ function InnerPage() {
                 {movie.description ? movie.description.substring(0, 300) : ""}
               </p>
               <hr />
-
               <p className="pt-4">
                 {movie.countries.map((country) => {
                   return country.name + "," + " ";

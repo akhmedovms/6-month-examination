@@ -3,7 +3,7 @@ import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 
 import Error from "./pages/Error";
-import InnerPage from "./pages/innerPage";
+import InnerPage from "./pages/InnerPage";
 import MainLayout from "./layout/MainLayout";
 
 function App() {
