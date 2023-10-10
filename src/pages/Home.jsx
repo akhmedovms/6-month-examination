@@ -10,7 +10,8 @@ function Home() {
     isPending,
     error,
   } = useFetch(
-    `https://api.kinopoisk.dev/v1.2/movie/search?query=${input}&token=5NZM7DH-J224TPT-JE5FTQA-36H3WT3
+    `https://api.kinopoisk.dev/v1.2/movie/search?query=${input}&token=FDFMT84-W554R5F-QCM09ES-8E8Z7D3
+
     `
   );
 

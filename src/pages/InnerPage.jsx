@@ -4,12 +4,16 @@ import { useFetch } from "../hooks/useFetch";
 
 function InnerPage() {
   const { id } = useParams();
-  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=5NZM7DH-J224TPT-JE5FTQA-36H3WT3`;
+  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=FDFMT84-W554R5F-QCM09ES-8E8Z7D3`;
   const { data: movie, isPending, error } = useFetch(url);
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <>
-      {movie && (
+      {movie ? (
         <div className="flex justify-center">
           <div className="card card-side bg-base-100 shadow-xl flex justify-center w-min">
             <figure>
@@ -31,22 +35,32 @@ function InnerPage() {
                   return gen.name + "," + " ";
                 })}
               </p>
-              <p className="pb-4">{movie.slogan.substring(0, 50)}</p>
+              <p className="pb-4">
+                {movie.slogan ? movie.slogan.substring(0, 50) : ""}
+              </p>
               <hr />
               <p className="pb-4 pt-4">
-                <a
-                  className="underline-offset-3 underline"
-                  href={
-                    movie.videos.trailers[movie.videos.trailers.length - 1].url
-                  }
-                >
-                  {movie.videos.trailers[movie.videos.trailers.length - 1].name}
-                </a>
+                {movie.videos.trailers.length > 0 &&
+                  movie.videos.trailers[movie.videos.trailers.length - 1]
+                    .url && (
+                    <a
+                      className="underline-offset-3 underline"
+                      href={
+                        movie.videos.trailers[movie.videos.trailers.length - 1]
+                          .url
+                      }
+                    >
+                      {
+                        movie.videos.trailers[movie.videos.trailers.length - 1]
+                          .name
+                      }
+                    </a>
+                  )}
               </p>
 
               <p className="pb-4">
                 <span>Budget: </span>{" "}
-                {movie.budget.value.toLocaleString() + "$"}
+                {movie.budget.value ? movie.budget.value.toLocaleString() : ""}$
               </p>
               <div className="flex justify-between items-end">
                 <div className="flex gap-2 top-[100%]">
@@ -64,6 +78,8 @@ function InnerPage() {
             </div>
           </div>
         </div>
+      ) : (
+        <div>Loading...</div>
       )}
     </>
   );
