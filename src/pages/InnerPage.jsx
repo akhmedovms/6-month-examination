@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 
 function InnerPage() {
   const { id } = useParams();
-  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=FDFMT84-W554R5F-QCM09ES-8E8Z7D3`;
+  const url = `https://api.kinopoisk.dev/v1.3/movie/${id}?token=W1QDTDE-W7749ND-PAFDWKF-28C31MZ`;
   const { data: movie, isPending, error } = useFetch(url);
 
   if (error) {
@@ -22,7 +22,9 @@ function InnerPage() {
             <div className="pl-10 pt-5 pr-10">
               <h2 className="card-title pb-2">{movie.alternativeName}</h2>
 
-              <p className="w-96 pb-4">{movie.description.substring(0, 300)}</p>
+              <p className="w-96 pb-4">
+                {movie.description ? movie.description.substring(0, 300) : ""}
+              </p>
               <hr />
 
               <p className="pt-4">
@@ -40,7 +42,9 @@ function InnerPage() {
               </p>
               <hr />
               <p className="pb-4 pt-4">
-                {movie.videos.trailers.length > 0 &&
+                {movie.videos &&
+                  movie.videos.trailers &&
+                  movie.videos.trailers.length > 0 &&
                   movie.videos.trailers[movie.videos.trailers.length - 1]
                     .url && (
                     <a
